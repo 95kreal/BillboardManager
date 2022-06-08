@@ -28,6 +28,7 @@ public class BillboardManagerTest {
 
         BillboardItem[] actual = manager.findAll();
         BillboardItem[] expected = {first, second, third, fourth, fifth};
+
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -48,6 +49,7 @@ public class BillboardManagerTest {
 
         BillboardItem[] actual = manager.findAll();
         BillboardItem[] expected = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth};
+
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -63,6 +65,7 @@ public class BillboardManagerTest {
 
         BillboardItem[] actual = manager.findLast();
         BillboardItem[] expected = {fifth, fourth, third, second, first};
+
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -83,6 +86,7 @@ public class BillboardManagerTest {
 
         BillboardItem[] actual = manager.findLast();
         BillboardItem[] expected = {tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -99,6 +103,40 @@ public class BillboardManagerTest {
 
         BillboardItem[] actual = manager.findLast();
         BillboardItem[] expected = {sixth, fifth, fourth, third, second};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void findLessLastCustomBillboards() {
+        BillboardManager manager = new BillboardManager(5);
+        manager.addNewFilms(first);
+        manager.addNewFilms(second);
+        manager.addNewFilms(third);
+        manager.addNewFilms(fourth);
+
+        manager.findAll();
+
+        BillboardItem[] actual = manager.findLast();
+        BillboardItem[] expected = {fourth, third, second, first};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void findEquallyLastCustomBillboards() {
+        BillboardManager manager = new BillboardManager(5);
+        manager.addNewFilms(first);
+        manager.addNewFilms(second);
+        manager.addNewFilms(third);
+        manager.addNewFilms(fourth);
+        manager.addNewFilms(fifth);
+
+        manager.findAll();
+
+        BillboardItem[] actual = manager.findLast();
+        BillboardItem[] expected = {fifth, fourth, third, second, first};
+
         Assertions.assertArrayEquals(expected, actual);
     }
 }
